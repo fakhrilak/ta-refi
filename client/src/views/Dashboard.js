@@ -8,12 +8,9 @@ import BarChart from "components/BarChart.js";
 export default function Dashboard() {
   return (
     <>
-      <Sidebar />
-      <div className="relative md:ml-64 bg-blueGray-100">
-        <Navbar />
         {/* Header */}
         <div className="relative bg-pink-600 md:pt-32 pb-32 pt-12">
-          <div className="px-4 md:px-10 mx-auto w-full">
+          <div className=" md:px-10 mx-auto w-full">
             <div>
               {/* Card stats */}
               <div className="flex flex-wrap">
@@ -467,7 +464,6 @@ export default function Dashboard() {
             </div>
           </footer>
         </div>
-      </div>
     </>
   );
 }

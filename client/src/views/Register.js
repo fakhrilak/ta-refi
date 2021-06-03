@@ -1,20 +1,21 @@
-import React,{useEffect, useState} from 'react';
-import {handleLogin} from "../redux/actions/auth"
+import React,{useState} from 'react'
+import {handleRegister} from "./../redux/actions/auth"
 import {connect} from "react-redux"
-const Login=({handleLogin,auth})=>{
-  const {token,message} = auth
-  const [email, setEmail] = useState("")
-  const [Pass, setPass] = useState("")
-  const onLogin=()=>{
-    handleLogin(email,Pass)
-  }
 
-  return (
-    <div className="pt-10">
+const Register = ({handleRegister,auth}) => {
+    const [email,setEmail]= useState("")
+    const [pass,setPass]= useState("")
+    const [phone,setPhone] = useState("")
+    const {message} = auth
+    const onRegister=()=>{
+        handleRegister(email,pass,phone)
+    }
+    return (
+        <div className="pt-10">
       <main>
         <section className="absolute w-full h-full">
           <div
-            className="absolute top-0 w-full h-full bg-gray-900" 
+            className="absolute top-0 w-full h-full bg-gray-900 pt-11" 
             style={{
               backgroundImage:
                 'url(' + require('assets/img/register_bg_2.png').default + ')',
@@ -63,13 +64,30 @@ const Login=({handleLogin,auth})=>{
                           className="block uppercase text-gray-700 text-xs font-bold mb-2"
                           htmlFor="grid-password"
                         >
+                          Phone
+                        </label>
+                        <input
+                          type="text"
+                          className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                          placeholder="Phone"
+                          value={phone}
+                          onChange={(e)=>setPhone(e.target.value)}
+                          style={{ transition: 'all .15s ease' }}
+                        />
+                      </div>
+
+                      <div className="relative w-full mb-3">
+                        <label
+                          className="block uppercase text-gray-700 text-xs font-bold mb-2"
+                          htmlFor="grid-password"
+                        >
                           Password
                         </label>
                         <input
                           type="password"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Password"
-                          value={Pass}
+                          value={pass}
                           onChange={(e)=>setPass(e.target.value)}
                           style={{ transition: 'all .15s ease' }}
                         />
@@ -80,7 +98,7 @@ const Login=({handleLogin,auth})=>{
                           className="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                           type="button"
                           style={{ transition: 'all .15s ease' }}
-                          onClick={()=>onLogin()}
+                          onClick={()=>onRegister()}
                         >
                           Sign In
                         </button>
@@ -114,9 +132,10 @@ const Login=({handleLogin,auth})=>{
         </section>
       </main>
     </div>
-  );
+    )
 }
+
 const mapStateToProps = (state) => ({
-  auth: state.auth,
-});
-export default connect(mapStateToProps, {handleLogin})(Login);
+    auth: state.auth,
+  });
+export default connect(mapStateToProps, {handleRegister})(Register);
