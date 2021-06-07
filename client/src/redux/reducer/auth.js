@@ -1,11 +1,10 @@
 import {types} from "../actions/types"
 const initialState = {
-    token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
     user: null,
     error:null,
-    token:null,
+    token: localStorage.getItem("token"),
     expire: null,
     message: ""
   };
@@ -14,19 +13,17 @@ const initialState = {
     const { type, payload } = action;
     switch (type) {
       case types.login_success:
+        localStorage.setItem("token",payload.data.token.accessToken)
         return {
           ...state,
           isAuthenticated: true,
           loading: false,
-          token : payload.token.accessToken,
+          token : payload.data.token.accessToken,
           message: payload.status
         };
       case types.login_fail:
-          return{
-              ...state,
-              message:payload.status,
-          }
       case types.register_success:
+        localStorage.setItem("token",payload.data.token.accessToken)
             return {
             ...state,
             isAuthenticated: true,
@@ -39,6 +36,14 @@ const initialState = {
                 ...state,
                 message:payload.message
             }
+        case types.log_out:
+          localStorage.removeItem("token")
+          return {
+            ...state,
+            token: null,
+            isAuthenticated: false,
+            loading: false,
+          }
       default:
         return state;
     }

@@ -2,8 +2,8 @@ import React from 'react'
 
 const Foother = () => {
     return (
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
-        <footer className="block py-4 ">
+        <div className="md:px-16 mx-auto w-full bg-gray-200 ">
+        <footer className="block py-4">
         <div className="container mx-auto px-4">
           <hr className="mb-4 border-b-1 border-blueGray-200" />
           <div className="flex flex-wrap items-center md:justify-between justify-center">

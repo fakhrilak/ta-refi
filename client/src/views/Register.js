@@ -33,7 +33,7 @@ const Register = ({handleRegister,auth}) => {
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
                   <div className="rounded-t mb-0 px-6 py-6">
                     <div className="text-center mb-3">
-                      <h3 className="text-gray-600 text-lg font-bold">Login</h3>
+                      <h3 className="text-gray-600 text-lg font-bold">Register</h3>
                     </div>
 
                     <hr className="mt-6 border-b-1 border-gray-400" />

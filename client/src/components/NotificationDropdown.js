@@ -1,5 +1,6 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import {useDispatch} from "react-redux"
 
 const NotificationDropdown = () => {
   // dropdown props
@@ -43,7 +44,7 @@ const NotificationDropdown = () => {
           }
           onClick={e => e.preventDefault()}
         >
-          Action
+          TEST
         </a>
         <a
           href="#pablo"
@@ -69,9 +70,8 @@ const NotificationDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={e => e.preventDefault()}
         >
-          Seprated link
+          LOG OUT
         </a>
       </div>
     </>

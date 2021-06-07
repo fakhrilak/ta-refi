@@ -18,9 +18,10 @@ export const handleLogin = (email, password) => async (
         payload: res.data,
       });
     } catch (err) {
+      console.log(err.response)
       dispatch({
         type: types.login_fail,
-        payload: err.massage
+        payload: err.response
       });
     }
   };
@@ -55,3 +56,9 @@ export const handleLogin = (email, password) => async (
       });
     }
   };
+
+  export const Handle_Logout=()=>async(dispatch)=>{
+    dispatch({
+      type: types.log_out,
+    })
+  }

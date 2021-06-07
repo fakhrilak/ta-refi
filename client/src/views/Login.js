@@ -8,7 +8,6 @@ const Login=({handleLogin,auth})=>{
   const onLogin=()=>{
     handleLogin(email,Pass)
   }
-
   return (
     <div className="pt-10">
       <main>
@@ -37,7 +36,7 @@ const Login=({handleLogin,auth})=>{
 
                     <hr className="mt-6 border-b-1 border-gray-400" />
                   </div>
-                  <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
+                  <div className="flex-auto px-2 lg:px-10 py-10 pt-0">
                     <div className="text-gray-500 text-center mb-3 font-bold"></div>
                     <p>{message}</p>
                     <form>

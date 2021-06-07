@@ -1,17 +1,24 @@
 import React from "react";
 import { createPopper } from "@popperjs/core";
+import { Handle_Logout } from "redux/actions/auth";
+import { connect } from "react-redux";
 
-const UserDropdown = () => {
+const UserDropdown = ({Handle_Logout}) => {
   // dropdown props
+  const Onclik=()=>{
+    Handle_Logout()
+  }
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
   const popoverDropdownRef = React.createRef();
   const openDropdownPopover = () => {
+
     createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
       placement: "bottom-end"
     });
     setDropdownPopoverShow(true);
   };
+  
   const closeDropdownPopover = () => {
     setDropdownPopoverShow(false);
   };
@@ -77,13 +84,17 @@ const UserDropdown = () => {
           className={
             "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
           }
-          onClick={e => e.preventDefault()}
+          onClick={()=> Onclik()}
         >
-          Seprated link
+          LOG OUT
         </a>
       </div>
     </>
   );
 };
 
-export default UserDropdown;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {Handle_Logout})(UserDropdown);
